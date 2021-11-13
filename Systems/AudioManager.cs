@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace DillonsDream
 {
@@ -13,6 +14,7 @@ namespace DillonsDream
 
         public int levelMusicToPlay;
 
+        public AudioMixerGroup musicMixer, sfxMixer;
         //private int currentTrack;
         void Awake()
         {
@@ -47,6 +49,16 @@ namespace DillonsDream
         public void PlaySoundEffects(int sfxToPlay)
         {
             sfx[sfxToPlay].Play();
+        }
+
+        public void SetMusicLevel()
+        {
+            musicMixer.audioMixer.SetFloat("MusicVol", UIManager.instance.musicVolSLider.value);
+        }
+
+        public void SetSFXLevel()
+        {
+            sfxMixer.audioMixer.SetFloat("SFXVol", UIManager.instance.sfxVolSlider.value);
         }
     }
 
